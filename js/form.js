@@ -11,8 +11,6 @@ function Gravar(event) {
     
     // Cria elementos HTML 
     EnviaPaciente(paciente);
-    
-    
 }
 
 function ObtemPacientesDoForm(form) {
@@ -67,4 +65,8 @@ function EnviaPaciente(paciente) {
     tabela.appendChild(pacienteTr);
     
     ValidaPaciente(paciente.peso,paciente.altura,pacienteTr);
+}
+
+function testeConsole() {
+    console.log("testeGit")
 }
