@@ -12,7 +12,9 @@ for (var i = 0; i < Pacientes.length; i++) {
     imc = paciente.querySelector(".info-imc");
     
     //Commit
-    ValidaPaciente(peso,altura,paciente);
+    ValidaPaciente(peso,altura,paciente); 
+
+
 }
 
 // Fórmula IMC
@@ -39,4 +41,8 @@ function ValidaPaciente(peso,altura,tr) {
     else{
         tr.querySelector(".info-imc").textContent = "invalido";
     }
+}
+
+function totalTestes(oi) {
+    return oi;
 }

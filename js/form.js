@@ -12,6 +12,7 @@ function Gravar(event) {
     // Cria elementos HTML 
     EnviaPaciente(paciente);
     
+    
 }
 
 function ObtemPacientesDoForm(form) {
