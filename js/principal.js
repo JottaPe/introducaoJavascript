@@ -1,20 +1,20 @@
 //Paulo
 var Pacientes = document.querySelectorAll(".paciente");
-var nome, peso, altura, imc, i, paciente, continua;
+var element, paciente, continua;
 
 // Laço por paciente
 for (var i = 0; i < Pacientes.length; i++) {
-    paciente = Pacientes[i];
-        
-    nome = paciente.querySelector(".info-nome").textContent;
-    peso = paciente.querySelector(".info-peso").textContent;
-    altura = paciente.querySelector(".info-altura").textContent;
-    imc = paciente.querySelector(".info-imc");
+    element = Pacientes[i];
+    
+    paciente = {
+        nome: element.querySelector(".info-nome").textContent,
+        peso: element.querySelector(".info-peso").textContent,
+        altura: element.querySelector(".info-altura").textContent,
+        imc: element.querySelector(".info-imc"),
+    }
     
     //Commit
-    ValidaPaciente(peso,altura,paciente); 
-
-
+    ValidaPaciente(paciente,element); 
 }
 
 // Fórmula IMC
@@ -24,25 +24,21 @@ function calcula_imc(Peso,Altura) {
 }
 
 // Validações
-function ValidaPaciente(peso,altura,tr) {
+function ValidaPaciente(paciente,tr) {
     
     var ok = true;
-    if (peso <= 5 || peso >= 500 ) {
+    if (paciente.peso <= 5 || paciente.peso >= 500 ) {
         ok = false;
         tr.classList.add("peso-invalido");
     }
-    if (altura <= 1 || altura >= 3 ) {
+    if (paciente.altura <= 1 || paciente.altura >= 3 ) {
         ok = false;
         tr.classList.add("altura-invalido");
     }
     if (ok){
-        tr.querySelector(".info-imc").textContent = calcula_imc(peso,altura);
+        tr.querySelector(".info-imc").textContent = calcula_imc(paciente.peso,paciente.altura);
     }
     else{
         tr.querySelector(".info-imc").textContent = "invalido";
     }
-}
-
-function totalTestes(oi) {
-    return oi;
 }

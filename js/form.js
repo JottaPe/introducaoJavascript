@@ -11,6 +11,8 @@ function Gravar(event) {
     
     // Cria elementos HTML 
     EnviaPaciente(paciente);
+
+    form.reset();
 }
 
 function ObtemPacientesDoForm(form) {
@@ -42,8 +44,8 @@ function EnviaPaciente(paciente) {
     
     tabela = document.querySelector("#tabela-pacientes");
     tabela.appendChild(pacienteTr);
-    
-    ValidaPaciente(paciente.peso,paciente.altura,pacienteTr);
+        
+    ValidaPaciente(paciente,pacienteTr);
 }
 
 function MontaTD(dado,classe) {
