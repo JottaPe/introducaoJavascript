@@ -2,17 +2,17 @@ var Salvar = document.querySelector("#adicionar-paciente");
 Salvar.addEventListener("click",Gravar);
 
 function Gravar(event) {
-    
     var form = document.querySelector("#paciente");
-    
+
     event.preventDefault();
     // Obtem dados do form paciente 
     paciente = ObtemPacientesDoForm(form);
-    
     // Cria elementos HTML 
-    EnviaPaciente(paciente);
-
-    form.reset();
+    if (PreCommit(paciente)) {
+        EnviaPaciente(paciente);
+        form.reset(); 
+    }
+    
 }
 
 function ObtemPacientesDoForm(form) {
@@ -23,16 +23,20 @@ function ObtemPacientesDoForm(form) {
         gordura : form.gordura.value,
         imc : 0
     }
-
     paciente.imc = calcula_imc(paciente.peso,paciente.altura);
-    
     return paciente;
     
 }
 
 function EnviaPaciente(paciente) {
-    var tabela,pacienteTr;
+   
+    var pacienteTr = MontaTr(paciente);    
+    ValidaPaciente(paciente,pacienteTr);
+}
 
+function MontaTr(paciente){
+    var tabela,pacienteTr;
+    
     pacienteTr = document.createElement("tr");
     pacienteTr.className = "paciente";
 
@@ -44,14 +48,12 @@ function EnviaPaciente(paciente) {
     
     tabela = document.querySelector("#tabela-pacientes");
     tabela.appendChild(pacienteTr);
-        
-    ValidaPaciente(paciente,pacienteTr);
+    return pacienteTr;
 }
 
 function MontaTD(dado,classe) {
     var td = document.createElement("td");
     td.textContent = dado
     td.classList.add(classe)
-
     return td;
 }
