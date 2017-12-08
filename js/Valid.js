@@ -50,8 +50,10 @@ function PreCommit(paciente){
 }
 
 function PesoValido(paciente){
+    var erro = document.querySelector("#msg-erro");
+
     if (paciente.peso < 0) {
-        alert("Peso negativo não é permitido!")
+        erro.textContent = "Peso negativo não é permitido!";
         return false ;
     }
     else{
@@ -60,11 +62,13 @@ function PesoValido(paciente){
 }
 
 function AlturaValida(paciente){
+    var erro = document.querySelector("#msg-erro");
+ 
     if (paciente.altura < 0) {
-        alert("Altura negativa não é valida!")
+        erro.textContent = "Altura negativa não é valida!";
         return false;
     }
-    else{
+    else{   
         return true;
     }
 }

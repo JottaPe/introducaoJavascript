@@ -3,7 +3,9 @@ Salvar.addEventListener("click",Gravar);
 
 function Gravar(event) {
     var form = document.querySelector("#paciente");
-
+    var erro = document.querySelector("#msg-erro");
+    
+    erro.textContent = ""
     event.preventDefault();
     // Obtem dados do form paciente 
     paciente = ObtemPacientesDoForm(form);
